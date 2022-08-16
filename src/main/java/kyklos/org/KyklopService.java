@@ -2,10 +2,14 @@ package kyklos.org;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.management.InstanceNotFoundException;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Log4j2
@@ -17,6 +21,16 @@ public class KyklopService {
 
     public KyklopService(KyklopRepo kRepo) {
         this.kRepo = kRepo;
+    }
+
+    //GetAll
+
+    public List<Kyklop> findAll() {
+        log.info("Get everything in author table");
+        List<Kyklop> kyklopList = new ArrayList<>();
+        Iterable<Kyklop> kyklops = kRepo.findAll();
+        kyklops.forEach(kyklopList::add);
+        return kyklopList;
     }
 
     // endpoint 1 get

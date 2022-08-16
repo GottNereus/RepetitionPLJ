@@ -7,21 +7,29 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceNotFoundException;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/kyklos")
-
+@CrossOrigin(origins = "*")
 public class KyklopController {
 
 
-    private KyklopService kService;
+    private final KyklopService kService;
 
     @Autowired
     public KyklopController(KyklopService kService) {this.kService = kService;}
 
+    //GetAll
 
-    // Get
+    @GetMapping
+    public ResponseEntity<List<Kyklop>> findAll() {
+        List<Kyklop> authors = kService.findAll();
+        return ResponseEntity.ok().body(authors);
+    }
+
+// Get
 
     @GetMapping("/{kyklopId}")
     public ResponseEntity<Kyklop> getKyklop(@Valid @PathVariable("kyklopId") Integer kyklopId) throws InstanceNotFoundException {
