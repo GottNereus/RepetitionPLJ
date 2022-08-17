@@ -20,6 +20,7 @@ public class Kyklop {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+
     private Integer id;
 
     private String vulgo;
