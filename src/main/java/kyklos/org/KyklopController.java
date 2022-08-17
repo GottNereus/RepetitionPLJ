@@ -37,16 +37,16 @@ public class KyklopController {
     }
 
     // Put
-    @PutMapping("/")
-    public ResponseEntity<Kyklop> putKyklop(@Valid @RequestBody Kyklop kyklop){
-        kService.putKyklop(kyklop);
+    @PutMapping("/{kyklopId}")
+    public ResponseEntity<Kyklop> putKyklop(@Valid @PathVariable("kyklopId") Integer kyklopId ,@RequestBody Kyklop kyklop){
+        kService.putKyklop(kyklop,kyklopId);
         return ResponseEntity.status(HttpStatus.CREATED).body(kyklop);
     }
 
     // Post
 
     @PostMapping("/")
-        public ResponseEntity<Kyklop> postKyklop(@Valid @RequestBody Kyklop newKyklop){
+        public ResponseEntity<Kyklop> postKyklop(@Valid  @RequestBody Kyklop newKyklop){
             kService.postKyklop(newKyklop);
             return ResponseEntity.status(HttpStatus.CREATED).body(newKyklop);
     }

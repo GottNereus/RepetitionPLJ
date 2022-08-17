@@ -42,8 +42,8 @@ public class KyklopService {
 
     // endpoint 2 put
 
-    public void putKyklop(Kyklop kyklop) {
-        if (!(kRepo.existsById(kyklop.getId()))) {
+    public void putKyklop(Kyklop kyklop, int id) {
+        if (!(kRepo.existsById(id))) {
             log.info("Kyklop was added");
             kRepo.save(kyklop);
         } else {
