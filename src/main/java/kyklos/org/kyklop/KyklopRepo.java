@@ -1,5 +1,6 @@
-package kyklos.org;
+package kyklos.org.kyklop;
 
+import kyklos.org.kyklop.Kyklop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
